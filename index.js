@@ -26,6 +26,27 @@ divideBtn.addEventListener('click', function() {
   screen.textContent = '0';
   mathAction = '/';
 })
+const multiplyBtn = document.querySelector('.btn--multiply');
+multiplyBtn.addEventListener('click', function() {
+  const individualNumber = parseFloat(screen.textContent);
+  storedNumbers.push(individualNumber);
+  screen.textContent = '0';
+  mathAction = '*';
+})
+const minusBtn = document.querySelector('.btn--minus');
+minusBtn.addEventListener('click', function() {
+  const individualNumber = parseFloat(screen.textContent);
+  storedNumbers.push(individualNumber);
+  screen.textContent = '0';
+  mathAction = '-';
+})
+const plusBtn = document.querySelector('.btn--plus');
+plusBtn.addEventListener('click', function() {
+  const individualNumber = parseFloat(screen.textContent);
+  storedNumbers.push(individualNumber);
+  screen.textContent = '0';
+  mathAction = '+';
+})
 
 const equalsBtn = document.querySelector('.btn--equals');
 
@@ -40,6 +61,12 @@ equalsBtn.addEventListener('click', function() {
     } else {
       result = storedNumbers[0] / storedNumbers[1]
     }
+  } else if (mathAction === '*') {
+    result = storedNumbers[0] * storedNumbers[1]
+  } else if (mathAction === '+') {
+    result = storedNumbers[0] + storedNumbers[1]
+  } else if (mathAction === '-') {
+    result = storedNumbers[0] - storedNumbers[1]
   }
   screen.textContent = result;
   storedNumbers =[];
