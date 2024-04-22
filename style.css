@@ -1,0 +1,111 @@
+
+
+.container {
+  width: 400px;
+  height: fit-content;
+  border: 1px solid black;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+  "screen screen screen screen"
+  "clear clear back divide"
+  "number-7 number-8 number-9 multiply"
+  "number-4 number-5 number-6 minus"
+  "number-1 number-2 number-3 plus"
+  "number-0 number-0 number-0 equals"
+  ;
+}
+
+.btn {
+  background-color: #d8d9db;
+  border: 1px solid black;
+  min-width: 24.5%;
+  height: 100px;
+  font-size: 2rem;
+  padding: 16px;
+}
+
+.btn:not(:first-child):hover {
+  filter: brightness(110%);
+}
+
+.btn--screen {
+  grid-area: screen;
+  background-color: black;
+  color: white;
+  text-align: right;
+}
+
+.btn--clear {
+  grid-area: clear;
+}
+
+.btn--back {
+  grid-area: back;
+}
+
+.btn--divide {
+  grid-area: divide;
+}
+
+.btn--number-7 {
+  grid-area: number-7;
+}
+
+.btn--number-8 {
+  grid-area: number-8;
+}
+
+.btn--number-9 {
+  grid-area: number-9;
+}
+.btn--number-4 {
+  grid-area: number-4;
+}
+
+.btn--number-5 {
+  grid-area: number-5;
+}
+
+.btn--number-6 {
+  grid-area: number-6;
+}
+.btn--number-3 {
+  grid-area: number-3;
+}
+
+.btn--number-2 {
+  grid-area: number-2;
+}
+
+.btn--number-1 {
+  grid-area: number-1;
+}
+.btn--number-0 {
+  grid-area: number-0;
+}
+
+.btn--multiply {
+  grid-area: multiply;
+}
+.btn--minus {
+  grid-area: minus;
+}
+
+.btn--plus {
+  grid-area: plus;
+}
+
+.btn--equals {
+  grid-area: equals;
+}
+
+.btn--equals,
+.btn--minus,
+.btn--multiply,
+.btn--divide,
+.btn--plus {
+  background-color: #df974c;
+}
+
