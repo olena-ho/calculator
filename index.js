@@ -24,6 +24,12 @@ numberBtns.forEach(button => {
 const divideBtn = document.querySelector('.btn--divide');
 
 divideBtn.addEventListener('click', function() {
+  let currentScreenContent = screen.textContent;
+  if (currentScreenContent[0] === '=') {
+    progressBar.textContent = currentScreenContent.slice(2);
+    progress = currentScreenContent.slice(2);
+    screen.textContent = '';
+  } 
   progress += screen.textContent + ' / ';
   progressBar.textContent = progress;
 
@@ -32,6 +38,12 @@ divideBtn.addEventListener('click', function() {
 
 const multiplyBtn = document.querySelector('.btn--multiply');
 multiplyBtn.addEventListener('click', function() {
+  let currentScreenContent = screen.textContent;
+  if (currentScreenContent[0] === '=') {
+    progressBar.textContent = currentScreenContent.slice(2);
+    progress = currentScreenContent.slice(2);
+    screen.textContent = '';
+  } 
   progress += screen.textContent + ' * ';
   progressBar.textContent = progress;
 
@@ -39,6 +51,12 @@ multiplyBtn.addEventListener('click', function() {
 })
 const minusBtn = document.querySelector('.btn--minus');
 minusBtn.addEventListener('click', function() {
+  let currentScreenContent = screen.textContent;
+  if (currentScreenContent[0] === '=') {
+    progressBar.textContent = currentScreenContent.slice(2);
+    progress = currentScreenContent.slice(2);
+    screen.textContent = '';
+  } 
   progress += screen.textContent + ' - ';
   progressBar.textContent = progress;
 
@@ -46,6 +64,12 @@ minusBtn.addEventListener('click', function() {
 })
 const plusBtn = document.querySelector('.btn--plus');
 plusBtn.addEventListener('click', function() {
+  let currentScreenContent = screen.textContent;
+  if (currentScreenContent[0] === '=') {
+    progressBar.textContent = currentScreenContent.slice(2);
+    progress = currentScreenContent.slice(2);
+    screen.textContent = '';
+  } 
   progress += screen.textContent + ' + ';
   progressBar.textContent = progress;
 
@@ -74,7 +98,7 @@ clearBtn.addEventListener('click', function() {
 const deleteOneDigit = document.querySelector('.btn--back');
 deleteOneDigit.addEventListener('click', function() {
   let currentScreenText = screen.textContent;
-  if (currentScreenText.length > 1) {
+  if (currentScreenText.length > 1 && currentScreenText[0] !== '=') {
     screen.textContent = currentScreenText.slice(0, -1);
   } else if (currentScreenText.length === 1) {
     screen.textContent = '0';
