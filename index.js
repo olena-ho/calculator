@@ -3,8 +3,18 @@ const screen = document.querySelector('.btn--screen');
 const progressBar = document.querySelector('.btn--progress');
 let progress = '';
 
-const makeUpNumber = (button) =>
-{
+const preventDivideByZero = () => {
+  const currentProgressBarContent = progressBar.textContent;
+  if (currentProgressBarContent.endsWith('/ ') && screen.textContent === '0') {
+    return {
+      message: "Can't divide by 0",
+      delay: 1000
+    };
+  }
+  return null;
+}
+
+const makeUpNumber = (button) => {
   let currentScreenContent = screen.textContent;
   if (currentScreenContent === '0') {
     screen.textContent = '';
@@ -12,18 +22,28 @@ const makeUpNumber = (button) =>
     screen.textContent = '';
     progressBar.textContent = '';
     progress = '';
-  }
+  } 
   const numberValue = button.textContent;
-  screen.textContent +=numberValue;
+  screen.textContent += numberValue;
 }
 
 numberBtns.forEach(button => {
   button.addEventListener('click', () => makeUpNumber(button));
 });
 
+
 const divideBtn = document.querySelector('.btn--divide');
 
 divideBtn.addEventListener('click', function() {
+  const error = preventDivideByZero();
+  if(error) {
+    screen.textContent = error.message;
+    setTimeout(() => {
+    screen.textContent = '';
+    }, error.delay);
+    return;
+  }
+
   let currentScreenContent = screen.textContent;
   if (currentScreenContent[0] === '=') {
     progressBar.textContent = currentScreenContent.slice(2);
@@ -33,11 +53,20 @@ divideBtn.addEventListener('click', function() {
   progress += screen.textContent + ' / ';
   progressBar.textContent = progress;
 
-  screen.textContent = '0';
+  screen.textContent = '';
 })
 
 const multiplyBtn = document.querySelector('.btn--multiply');
 multiplyBtn.addEventListener('click', function() {
+  const error = preventDivideByZero();
+  if(error) {
+    screen.textContent = error.message;
+    setTimeout(() => {
+    screen.textContent = '';
+    }, error.delay);
+    return;
+  }
+
   let currentScreenContent = screen.textContent;
   if (currentScreenContent[0] === '=') {
     progressBar.textContent = currentScreenContent.slice(2);
@@ -47,10 +76,19 @@ multiplyBtn.addEventListener('click', function() {
   progress += screen.textContent + ' * ';
   progressBar.textContent = progress;
 
-  screen.textContent = '0';
+  screen.textContent = '';
 })
+
 const minusBtn = document.querySelector('.btn--minus');
 minusBtn.addEventListener('click', function() {
+  const error = preventDivideByZero();
+  if(error) {
+    screen.textContent = error.message;
+    setTimeout(() => {
+    screen.textContent = '';
+    }, error.delay);
+    return;
+  }
   let currentScreenContent = screen.textContent;
   if (currentScreenContent[0] === '=') {
     progressBar.textContent = currentScreenContent.slice(2);
@@ -60,10 +98,19 @@ minusBtn.addEventListener('click', function() {
   progress += screen.textContent + ' - ';
   progressBar.textContent = progress;
 
-  screen.textContent = '0';
+  screen.textContent = '';
 })
+
 const plusBtn = document.querySelector('.btn--plus');
 plusBtn.addEventListener('click', function() {
+  const error = preventDivideByZero();
+  if(error) {
+    screen.textContent = error.message;
+    setTimeout(() => {
+    screen.textContent = '';
+    }, error.delay);
+    return;
+  }
   let currentScreenContent = screen.textContent;
   if (currentScreenContent[0] === '=') {
     progressBar.textContent = currentScreenContent.slice(2);
@@ -73,12 +120,21 @@ plusBtn.addEventListener('click', function() {
   progress += screen.textContent + ' + ';
   progressBar.textContent = progress;
 
-  screen.textContent = '0';
+  screen.textContent = '';
 })
+
 
 const equalsBtn = document.querySelector('.btn--equals');
 
 equalsBtn.addEventListener('click', function() {
+  const error = preventDivideByZero();
+  if(error) {
+    screen.textContent = error.message;
+    setTimeout(() => {
+    screen.textContent = '';
+    }, error.delay);
+    return;
+  }
   progress += screen.textContent;
   progressBar.textContent = progress;
 
